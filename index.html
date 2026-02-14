@@ -1,21 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>My Site</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YacineXR SPA</title>
+
 <style>
-body {
-  background: #111;
-  color: white;
-  text-align: center;
-  margin-top: 100px;
-  font-family: Arial;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  text-align:center;
+}
+
+nav{
+  background:#111;
+  padding:15px;
+}
+
+nav a{
+  color:white;
+  margin:0 15px;
+  text-decoration:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+nav a:hover{
+  color:#00f2ff;
+}
+
+#content{
+  padding:50px 20px;
+  animation:fade 0.4s ease;
+}
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#00f2ff;
+  font-weight:bold;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
-<h1>KHADAM 🔥</h1>
-<p>If you see this, GitHub Pages works.</p>
-</body>
-</html>
+
+<nav>
+  <a onclick="navigate('home')">الرئيسية</a>
+  <a on
