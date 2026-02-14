@@ -3,20 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YacineXR SPA</title>
+<title>YacineXR | SPA</title>
 
 <style>
-body{
+*{
   margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
   font-family:Arial, sans-serif;
   background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:white;
-  text-align:center;
 }
 
 nav{
   background:#111;
   padding:15px;
+  text-align:center;
 }
 
 nav a{
@@ -24,15 +29,15 @@ nav a{
   margin:0 15px;
   text-decoration:none;
   font-weight:bold;
-  cursor:pointer;
 }
 
 nav a:hover{
   color:#00f2ff;
 }
 
-#content{
-  padding:50px 20px;
+#app{
+  padding:60px 20px;
+  text-align:center;
   animation:fade 0.4s ease;
 }
 
@@ -43,10 +48,11 @@ button{
   cursor:pointer;
   background:#00f2ff;
   font-weight:bold;
+  margin-top:15px;
 }
 
 @keyframes fade{
-  from{opacity:0; transform:translateY(10px);}
+  from{opacity:0; transform:translateY(15px);}
   to{opacity:1; transform:translateY(0);}
 }
 </style>
@@ -55,5 +61,42 @@ button{
 <body>
 
 <nav>
-  <a onclick="navigate('home')">الرئيسية</a>
-  <a on
+  <a href="#home">الرئيسية</a>
+  <a href="#about">من أنا</a>
+  <a href="#contact">تواصل</a>
+</nav>
+
+<div id="app"></div>
+
+<script>
+
+const routes = {
+  home: `
+    <h1>🚀 مرحبا بكم في YacineXR</h1>
+    <p>موقع SPA احترافي بدون إعادة تحميل الصفحة</p>
+    <button onclick="location.hash='about'">تعرف عليّ</button>
+  `,
+  about: `
+    <h1>👨‍💻 من أنا</h1>
+    <p>أنا مطور مغربي كنخدم HTML, CSS و JavaScript.</p>
+    <button onclick="location.hash='contact'">تواصل معي</button>
+  `,
+  contact: `
+    <h1>📩 تواصل</h1>
+    <p>📧 your@email.com</p>
+    <button onclick="location.hash='home'">رجوع</button>
+  `
+};
+
+function router(){
+  const hash = location.hash.replace("#","") || "home";
+  document.getElementById("app").innerHTML = routes[hash];
+}
+
+window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
+
+</script>
+
+</body>
+</html>
