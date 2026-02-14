@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YacineXR | SPA</title>
+<title>YacineXR | Professional SPA</title>
 
 <style>
 *{
@@ -29,10 +29,17 @@ nav a{
   margin:0 15px;
   text-decoration:none;
   font-weight:bold;
+  padding-bottom:5px;
+  transition:0.3s;
 }
 
 nav a:hover{
   color:#00f2ff;
+}
+
+nav a.active{
+  color:#00f2ff;
+  border-bottom:2px solid #00f2ff;
 }
 
 #app{
@@ -78,19 +85,29 @@ const routes = {
   `,
   about: `
     <h1>👨‍💻 من أنا</h1>
-    <p>أنا مطور مغربي كنخدم HTML, CSS و JavaScript.</p>
+    <p>أنا مطور مغربي كنخدم HTML و CSS و JavaScript.</p>
     <button onclick="location.hash='contact'">تواصل معي</button>
   `,
   contact: `
     <h1>📩 تواصل</h1>
     <p>📧 your@email.com</p>
-    <button onclick="location.hash='home'">رجوع</button>
+    <button onclick="location.hash='home'">رجوع للرئيسية</button>
   `
 };
 
 function router(){
   const hash = location.hash.replace("#","") || "home";
+
   document.getElementById("app").innerHTML = routes[hash];
+
+  document.querySelectorAll("nav a").forEach(link=>{
+    link.classList.remove("active");
+  });
+
+  const activeLink = document.querySelector(`nav a[href="#${hash}"]`);
+  if(activeLink){
+    activeLink.classList.add("active");
+  }
 }
 
 window.addEventListener("hashchange", router);
